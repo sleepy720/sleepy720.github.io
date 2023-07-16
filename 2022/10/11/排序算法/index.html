@@ -4,17 +4,19 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hexo">
-    <meta name="description" content="1Title:排序算法
-
-排序算法
+    <meta name="keywords" content="排序算法, Hexo">
+    <meta name="description" content="排序算法
 选择排序
 
 1.1 算法描述
 
 首先在未排序序列中找到最大（小）元素，存放到排序序列的起始位置
 然后，再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾
-以此类推，直到所有元素均排列完毕">
+以此类推，直到所有元素均排列完毕
+
+
+1.2 算法实现
+1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -26,7 +28,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hexo</title>
+    <title>排序算法 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -343,12 +345,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title"></h1>
+                    <h1 class="description center-align post-title">排序算法</h1>
                 </div>
             </div>
         </div>
@@ -405,9 +407,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Title:排序算法</span><br></pre></td></tr></table></figure>
-
-<h4 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h4><ol>
+                <h4 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h4><ol>
 <li><strong>选择排序</strong></li>
 </ol>
 <p>1.1 算法描述</p>
@@ -446,6 +446,13 @@
 <p><img src="https://pic3.zhimg.com/v2-91b76e8e4dab9b0cad9a017d7dd431e2_b.webp" alt="动图"></p>
 <p>​	4.<strong>希尔排序</strong></p>
 <p>4.1 算法描述</p>
+<ul>
+<li>分解1：从未排序数组中取出第一个元素，和已排序的集合中的元素进行比较，则将被比较的元素向后移动，直到数组的头部或者找到比前面的元素大时插入待插入的元素</li>
+<li>分解2： 重复分解1的操作，逐步扩展已排序好的队列</li>
+<li>分解3：使用循环操作优化每一轮寻找插入位置的操作</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">InsertionSort</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">int</span> [] arrs = &#123;<span class="number">8</span>,<span class="number">6</span>,<span class="number">12</span>,<span class="number">7</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">1</span>,<span class="number">9</span>&#125;;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">start</span> <span class="operator">=</span> <span class="number">1</span>; start &lt; arrs.length; start++) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">insert</span> <span class="operator">=</span> arrs[start];</span><br><span class="line">            <span class="keyword">while</span> (start &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (arrs[start - <span class="number">1</span>] &gt; insert) &#123;</span><br><span class="line">                    <span class="comment">//前面的数字比待插入的值大，向后面移动</span></span><br><span class="line">                    arrs[start] = arrs[start - <span class="number">1</span>];</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="comment">//前面的数字比待插入的值小，直接插入</span></span><br><span class="line">                    arrs[start] = insert;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                start--;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//start等于0直接注入首位置</span></span><br><span class="line">            <span class="keyword">if</span> (start == <span class="number">0</span>) &#123;</span><br><span class="line">                arrs[<span class="number">0</span>] = insert;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;插入排序后的序列：&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; arrs.length; i++) &#123;</span><br><span class="line">            System.out.print(arrs[i]+<span class="string">&quot; &quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
                 
             </div>
@@ -586,12 +593,11 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;Current
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2022/10/11/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">
+                <a href="/2023/03/19/MySQL/">
                     <div class="card-image">
                         
                         
@@ -607,9 +613,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-11
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-03-19
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -618,7 +624,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
@@ -838,7 +843,7 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2019-2022</span>
+                <span id="year">2019-2023</span>
             
             <a href="/about" target="_blank">John Doe</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
